@@ -14,7 +14,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/528eb7af-5635-410a-9317-9baee77f251a.png" 
               alt="CW Mathebula & Associates" 
-              className="h-32 w-auto filter drop-shadow-sm" 
+              className="h-40 w-auto filter drop-shadow-sm" 
             />
           </div>
           
