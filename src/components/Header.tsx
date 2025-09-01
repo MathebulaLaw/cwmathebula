@@ -11,7 +11,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/lovable-uploads/528eb7af-5635-410a-9317-9baee77f251a.png" alt="CW Mathebula & Associates" className="h-12 w-auto" />
+            <img 
+              src="/lovable-uploads/528eb7af-5635-410a-9317-9baee77f251a.png" 
+              alt="CW Mathebula & Associates" 
+              className="h-16 w-auto filter drop-shadow-sm" 
+            />
           </div>
           
           {/* Navigation */}
