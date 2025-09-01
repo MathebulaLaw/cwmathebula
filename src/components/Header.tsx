@@ -6,37 +6,37 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-navy shadow-elegant">
-      <div className="container mx-auto px-6 py-4">
+    <header className="sticky top-0 z-50 bg-white shadow-elegant">
+      <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold text-gold">
-            CW Mathebula & Associates
+          <div className="flex items-center">
+            <img src="/lovable-uploads/528eb7af-5635-410a-9317-9baee77f251a.png" alt="CW Mathebula & Associates" className="h-12 w-auto" />
           </div>
           
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-primary-foreground hover:text-gold transition-smooth"
+              className="text-navy hover:text-gold transition-smooth font-medium"
             >
               About Us
             </button>
             <button 
               onClick={() => scrollToSection('practice-areas')}
-              className="text-primary-foreground hover:text-gold transition-smooth"
+              className="text-navy hover:text-gold transition-smooth font-medium"
             >
               Practice Areas
             </button>
             <button 
               onClick={() => scrollToSection('team')}
-              className="text-primary-foreground hover:text-gold transition-smooth"
+              className="text-navy hover:text-gold transition-smooth font-medium"
             >
               Our People
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-primary-foreground hover:text-gold transition-smooth"
+              className="text-navy hover:text-gold transition-smooth font-medium"
             >
               Contact
             </button>
@@ -50,7 +50,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-gold">
+          <button className="md:hidden text-navy">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
