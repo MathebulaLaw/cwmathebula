@@ -7,7 +7,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-hero">
+    <section className="relative min-h-screen flex items-start pt-24 bg-gradient-hero">
       {/* Background Image Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-20"
