@@ -100,15 +100,18 @@ const Hero = () => {
           {/* Contact - Handshake */}
           <button
             onClick={scrollToContact}
-            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none"
+            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none text-center"
             aria-label="Navigate to Contact"
           >
-            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
               <img 
-                src="/handshake-icon.png" 
-                alt="Handshake - Contact Us"
+                src="/lovable-uploads/ac678ef5-9097-4b4d-a1ba-89a03204f705.png" 
+                alt="Handshake - Results Driven"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
+            </div>
+            <div className="text-gold text-sm md:text-base font-medium">
+              Results Driven
             </div>
           </button>
         </div>
