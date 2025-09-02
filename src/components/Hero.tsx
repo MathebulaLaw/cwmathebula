@@ -56,8 +56,8 @@ const Hero = () => {
                 className="w-full h-full object-contain drop-shadow-lg"
               />
             </div>
-            <div className="text-gold text-sm md:text-base font-medium">
-              Areas of Expertise
+            <div className="text-gold text-sm md:text-base font-medium text-center">
+              Areas of Practice
             </div>
           </button>
           
@@ -74,7 +74,7 @@ const Hero = () => {
                 className="w-full h-full object-contain drop-shadow-lg"
               />
             </div>
-            <div className="text-gold text-sm md:text-base font-medium">
+            <div className="text-gold text-sm md:text-base font-medium text-center">
               Experienced Team
             </div>
           </button>
@@ -92,7 +92,7 @@ const Hero = () => {
                 className="w-full h-full object-contain drop-shadow-lg"
               />
             </div>
-            <div className="text-gold text-sm md:text-base font-medium">
+            <div className="text-gold text-sm md:text-base font-medium text-center">
               Client Focused
             </div>
           </button>
@@ -110,7 +110,7 @@ const Hero = () => {
                 className="w-full h-full object-contain drop-shadow-lg"
               />
             </div>
-            <div className="text-gold text-sm md:text-base font-medium">
+            <div className="text-gold text-sm md:text-base font-medium text-center">
               Results Driven
             </div>
           </button>
