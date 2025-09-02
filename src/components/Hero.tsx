@@ -82,15 +82,18 @@ const Hero = () => {
           {/* About - Shield Check */}
           <button
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none"
+            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none text-center"
             aria-label="Navigate to About"
           >
-            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
               <img 
-                src="/shield-icon.png" 
-                alt="Shield with Checkmark - About Us"
+                src="/lovable-uploads/8648243a-89c7-402c-9312-bf68b0815aab.png" 
+                alt="Shield with Checkmark - Client Focused"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
+            </div>
+            <div className="text-gold text-sm md:text-base font-medium">
+              Client Focused
             </div>
           </button>
           
