@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Scale, Users, ShieldCheck, Handshake } from "lucide-react";
 import heroImage from "@/assets/law-office-hero.jpg";
 
 const Hero = () => {
@@ -41,20 +42,51 @@ const Hero = () => {
           </Button>
         </div>
         
-        {/* Key Points */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-gold mb-2">5</div>
-            <div className="text-primary-foreground">Office Locations</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-gold mb-2">Full Service</div>
-            <div className="text-primary-foreground">Commercial Law Firm</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-gold mb-2">Expert</div>
-            <div className="text-primary-foreground">Legal Representation</div>
-          </div>
+        {/* Interactive Icons */}
+        <div className="mt-12 flex justify-center items-center gap-8 md:gap-12">
+          {/* Practice Areas - Scales */}
+          <button
+            onClick={() => document.getElementById('practice-areas')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none"
+            aria-label="Navigate to Practice Areas"
+          >
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+              <Scale className="w-full h-full text-gold drop-shadow-lg" />
+            </div>
+          </button>
+          
+          {/* Team - Users */}
+          <button
+            onClick={() => document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none"
+            aria-label="Navigate to Our Team"
+          >
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+              <Users className="w-full h-full text-gold drop-shadow-lg" />
+            </div>
+          </button>
+          
+          {/* About - Shield Check */}
+          <button
+            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none"
+            aria-label="Navigate to About"
+          >
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+              <ShieldCheck className="w-full h-full text-gold drop-shadow-lg" />
+            </div>
+          </button>
+          
+          {/* Contact - Handshake */}
+          <button
+            onClick={scrollToContact}
+            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none"
+            aria-label="Navigate to Contact"
+          >
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+              <Handshake className="w-full h-full text-gold drop-shadow-lg" />
+            </div>
+          </button>
         </div>
       </div>
     </section>
