@@ -46,15 +46,18 @@ const Hero = () => {
           {/* Practice Areas - Scales */}
           <button
             onClick={() => document.getElementById('practice-areas')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none"
+            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none text-center"
             aria-label="Navigate to Practice Areas"
           >
-            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
               <img 
-                src="/scales-icon.png" 
-                alt="Scales of Justice - Practice Areas"
+                src="/lovable-uploads/03b84783-4f70-4454-8a4d-dee7408362f3.png" 
+                alt="Scales of Justice - Areas of Expertise"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
+            </div>
+            <div className="text-gold text-sm md:text-base font-medium">
+              Areas of Expertise
             </div>
           </button>
           
