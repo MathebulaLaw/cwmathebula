@@ -42,7 +42,7 @@ const Hero = () => {
         </div>
         
         {/* Interactive Icons */}
-        <div className="mt-12 flex justify-center items-center gap-16 md:gap-24">
+        <div className="mt-12 flex justify-between items-center max-w-4xl mx-auto">
           {/* Practice Areas - Scales */}
           <button
             onClick={() => document.getElementById('practice-areas')?.scrollIntoView({ behavior: 'smooth' })}
