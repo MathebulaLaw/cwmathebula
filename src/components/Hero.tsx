@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Scale, Users, ShieldCheck, Handshake } from "lucide-react";
 import heroImage from "@/assets/law-office-hero.jpg";
 
 const Hero = () => {
@@ -43,7 +42,7 @@ const Hero = () => {
         </div>
         
         {/* Interactive Icons */}
-        <div className="mt-12 flex justify-center items-center gap-8 md:gap-12">
+        <div className="mt-12 flex justify-center items-center gap-16 md:gap-24">
           {/* Practice Areas - Scales */}
           <button
             onClick={() => document.getElementById('practice-areas')?.scrollIntoView({ behavior: 'smooth' })}
@@ -51,7 +50,11 @@ const Hero = () => {
             aria-label="Navigate to Practice Areas"
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
-              <Scale className="w-full h-full text-gold drop-shadow-lg" />
+              <img 
+                src="/lovable-uploads/528eb7af-5635-410a-9317-9baee77f251a.png" 
+                alt="Scales of Justice - Practice Areas"
+                className="w-full h-full object-contain drop-shadow-lg"
+              />
             </div>
           </button>
           
@@ -62,7 +65,11 @@ const Hero = () => {
             aria-label="Navigate to Our Team"
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
-              <Users className="w-full h-full text-gold drop-shadow-lg" />
+              <img 
+                src="/lovable-uploads/e2bc2a93-d63a-4c78-9e7f-5ec8ff80ef15.png" 
+                alt="Team Icon - Our People"
+                className="w-full h-full object-contain drop-shadow-lg"
+              />
             </div>
           </button>
           
@@ -73,7 +80,11 @@ const Hero = () => {
             aria-label="Navigate to About"
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
-              <ShieldCheck className="w-full h-full text-gold drop-shadow-lg" />
+              <img 
+                src="/lovable-uploads/a378c7c7-724c-4d47-bc3a-9bf4ed60702b.png" 
+                alt="Shield with Checkmark - About Us"
+                className="w-full h-full object-contain drop-shadow-lg"
+              />
             </div>
           </button>
           
@@ -84,7 +95,11 @@ const Hero = () => {
             aria-label="Navigate to Contact"
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
-              <Handshake className="w-full h-full text-gold drop-shadow-lg" />
+              <img 
+                src="/lovable-uploads/82612302-2e4e-4656-b10b-af21c983b35c.png" 
+                alt="Handshake - Contact Us"
+                className="w-full h-full object-contain drop-shadow-lg"
+              />
             </div>
           </button>
         </div>
