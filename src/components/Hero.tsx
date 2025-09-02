@@ -64,15 +64,18 @@ const Hero = () => {
           {/* Team - Users */}
           <button
             onClick={() => document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none"
+            className="group transition-transform duration-300 hover:scale-125 focus:scale-125 focus:outline-none text-center"
             aria-label="Navigate to Our Team"
           >
-            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
               <img 
-                src="/team-icon.png" 
-                alt="Team Icon - Our People"
+                src="/lovable-uploads/9507f24f-13ab-49fb-9bd9-9966fc60dc85.png" 
+                alt="Team Icon - Experienced Team"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
+            </div>
+            <div className="text-gold text-sm md:text-base font-medium">
+              Experienced Team
             </div>
           </button>
           
