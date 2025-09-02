@@ -51,7 +51,7 @@ const Hero = () => {
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
               <img 
-                src="/lovable-uploads/528eb7af-5635-410a-9317-9baee77f251a.png" 
+                src="/scales-icon.png" 
                 alt="Scales of Justice - Practice Areas"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
@@ -66,7 +66,7 @@ const Hero = () => {
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
               <img 
-                src="/lovable-uploads/e2bc2a93-d63a-4c78-9e7f-5ec8ff80ef15.png" 
+                src="/team-icon.png" 
                 alt="Team Icon - Our People"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
@@ -81,7 +81,7 @@ const Hero = () => {
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
               <img 
-                src="/lovable-uploads/a378c7c7-724c-4d47-bc3a-9bf4ed60702b.png" 
+                src="/shield-icon.png" 
                 alt="Shield with Checkmark - About Us"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
@@ -96,7 +96,7 @@ const Hero = () => {
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
               <img 
-                src="/lovable-uploads/82612302-2e4e-4656-b10b-af21c983b35c.png" 
+                src="/handshake-icon.png" 
                 alt="Handshake - Contact Us"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
