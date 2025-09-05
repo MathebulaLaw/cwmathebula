@@ -124,9 +124,46 @@ const Team = () => {
               <h4 className="text-lg font-semibold text-gold mb-2">Trivin Mkhombo</h4>
               <p className="text-foreground font-medium">Legal Assistant</p>
             </Card>
-            <Card className="p-6">
-              <h4 className="text-lg font-semibold text-gold mb-2">Xichavo Ndlovu</h4>
-              <p className="text-foreground font-medium">Legal Assistant</p>
+            <Card className="group relative overflow-hidden hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 cursor-pointer hover:scale-105">
+              <CardContent className="p-6 transition-all duration-500 group-hover:p-8">
+                <div className="text-center">
+                  <div className="relative mb-6">
+                    <img 
+                      src="/lovable-uploads/b66145f2-3dff-46fc-bcbc-2f61f84acabb.png" 
+                      alt="Mandy Mkhombo"
+                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-gold transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                  </div>
+                  <h4 className="text-xl font-bold text-gold mb-2 group-hover:text-2xl transition-all duration-300">Mandy Mkhombo</h4>
+                  <p className="text-foreground font-semibold mb-4 group-hover:mb-6 transition-all duration-300">Legal Assistant</p>
+                  
+                  {/* Short description - always visible */}
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 group-hover:hidden transition-all duration-300">Legal assistant responsible for document preparation, legal advice, diary management and general office management.</p>
+                  
+                  {/* Extended bio - visible on hover */}
+                  <div className="opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-500 group-hover:mb-6">
+                    <div className="text-sm leading-relaxed space-y-3 text-left">
+                      <p className="text-muted-foreground">
+                        Mandy Mkhombo is our legal assistant responsible for document preparation, legal advice, diary management and general office management. She has worked in the aviation industry and is currently studying for her degree in Industrial Psychology.
+                      </p>
+                      <p className="text-muted-foreground">
+                        A bubbly personality with a warm smile, Mandy has a solid foundation in aviation principles alongside a keen understanding of human behaviour, decision-making, and performance. This ensures operational efficiency in our Bryanston, Sandton and Blackheath, Randburg offices, where Mandy works, alternating between the two office spaces depending on the matter at hand.
+                      </p>
+                      <p className="text-muted-foreground">
+                        As a disciplined, detail-oriented, and adaptable individual who is committed to continuous professional growth, Mandy is an asset to our law firm. When she is not busy with clients and legal documents, Mandy enjoys travelling, attending functions with friends, cooking, and playing tennis. As a sports enthusiast, she is happy when watching or participating in sports. She likes driving, and her friends nicknamed her "the female Lewis Hamilton."
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Hover Indicator */}
+                  <div className="mt-4 opacity-60 group-hover:opacity-0 transition-all duration-300">
+                    <div className="bg-gold/10 text-gold text-xs px-3 py-1 rounded-full border border-gold/20">
+                      Full bio
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
             </Card>
           </div>
         </div>
