@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import wisaniImage from "/lovable-uploads/1bf9f468-e2a9-49a3-a0ba-c4b45edf09ea.png";
 import mphoImage from "/lovable-uploads/391c430b-9831-4dd5-a1ad-2230f287040b.png";
-import vuksoiImage from "@/assets/vukosi-nxolwani.jpg";
+import vuksoiImage from "/lovable-uploads/3c1ddfd3-14a6-4b8f-b88f-5d5f789fc36e.png";
 
 const teamMembers = [
   {
@@ -25,9 +25,9 @@ const teamMembers = [
     name: "Vukosi Nxolwani",
     role: "Legal Research & Marketing",
     image: vuksoiImage,
-    description: "Vukosi is a visual artist and marketing specialist responsible for business development across our Limpopo offices.",
-    extendedBio: "Vukosi is a visual artist and marketing specialist responsible for business development across our Limpopo offices. He combines creative thinking with strategic marketing to grow our client base. His unique background in visual arts brings a fresh perspective to legal marketing and client communication, helping to bridge the gap between complex legal concepts and client understanding.",
-    qualifications: ["Visual Arts Degree (TUT)", "Theology Certificate", "Marketing Management Certificate", "Business Development"]
+    description: "Vukosi is a visual artist who paints nature and portraits. He is interested in the human condition and human behaviour.",
+    extendedBio: "Vukosi is a visual artist who paints nature and portraits. He is interested in the human condition and human behaviour. Vukosi studied for a Visual Arts degree at Tshwane University of Technology and holds a Theology Certificate from the Auckland Park Theological Seminary. He has a Marketing Management certificate from Mopani South East College and is responsible for marketing and business development of the law firm in Limpopo province, covering our Polokwane, Tzaneen and Phalaborwa offices.\n\nWhen not busy with new clients and formulating marketing strategies, Vukosi enjoys exploring nature in the nearby Kruger National Park, running and reading novels. He loves languages and is conversant in all languages spoken in Limpopo province.",
+    qualifications: ["Visual Arts Degree (TUT)", "Theology Certificate (Auckland Park Theological Seminary)", "Marketing Management Certificate (Mopani South East College)", "Business Development Specialist", "Multilingual (All Limpopo Languages)"]
   }
 ];
 
@@ -47,79 +47,55 @@ const Team = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-            <HoverCard key={index} openDelay={300} closeDelay={100}>
-              <HoverCardTrigger asChild>
-                <Card className="group relative overflow-hidden hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 cursor-pointer">
-                  <CardContent className="p-6">
-                    <div className="text-center">
-                      <div className="relative mb-6">
-                        <img 
-                          src={member.image} 
-                          alt={member.name}
-                          className="w-32 h-32 rounded-full mx-auto object-cover shadow-gold"
-                        />
-                        <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                      </div>
-                      <h3 className="text-xl font-bold text-gold mb-2">{member.name}</h3>
-                      <p className="text-foreground font-semibold mb-4">{member.role}</p>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">{member.description}</p>
-                      
-                      <div className="border-t border-border pt-4">
-                        <h4 className="text-sm font-semibold text-foreground mb-2">Key Qualifications:</h4>
-                        <ul className="text-xs text-muted-foreground space-y-1">
-                          {member.qualifications.slice(0, 3).map((qual, idx) => (
-                            <li key={idx} className="flex items-center">
-                              <div className="w-1 h-1 bg-gold rounded-full mr-2"></div>
-                              {qual}
-                            </li>
-                          ))}
-                          {member.qualifications.length > 3 && (
-                            <li className="text-gold/80 text-xs italic">+{member.qualifications.length - 3} more qualifications</li>
-                          )}
-                        </ul>
-                      </div>
-                      
-                      {/* Hover Indicator */}
-                      <div className="mt-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="bg-gold/10 text-gold text-xs px-3 py-1 rounded-full border border-gold/20">
-                          Hover for full biography
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </HoverCardTrigger>
-              
-              <HoverCardContent 
-                className="w-96 max-w-[90vw] max-h-[80vh] overflow-y-auto bg-gradient-to-br from-navy/95 to-navy/85 backdrop-blur-lg border-gold/20 text-white p-6"
-                side="top"
-                align="center"
-              >
+            <Card key={index} className="group relative overflow-hidden hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 cursor-pointer hover:scale-105">
+              <CardContent className="p-6 transition-all duration-500 group-hover:p-8">
                 <div className="text-center">
-                  <div className="relative mb-4">
+                  <div className="relative mb-6">
                     <img 
                       src={member.image} 
                       alt={member.name}
-                      className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-gold"
+                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-gold transition-transform duration-500 group-hover:scale-110"
                     />
+                    <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   </div>
-                  <h3 className="text-xl font-bold text-gold mb-1">{member.name}</h3>
-                  <p className="text-gold/80 font-medium mb-6">{member.role}</p>
+                  <h3 className="text-xl font-bold text-gold mb-2 group-hover:text-2xl transition-all duration-300">{member.name}</h3>
+                  <p className="text-foreground font-semibold mb-4 group-hover:mb-6 transition-all duration-300">{member.role}</p>
                   
-                  <div className="text-left space-y-4">
-                    <div className="text-sm leading-relaxed space-y-3">
+                  {/* Short description - always visible */}
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 group-hover:hidden transition-all duration-300">{member.description}</p>
+                  
+                  {/* Extended bio - visible on hover */}
+                  <div className="opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-500 group-hover:mb-6">
+                    <div className="text-sm leading-relaxed space-y-3 text-left">
                       {member.extendedBio.split('\n\n').map((paragraph, idx) => (
-                        <p key={idx} className="text-white/90">
+                        <p key={idx} className="text-muted-foreground">
                           {paragraph}
                         </p>
                       ))}
                     </div>
+                  </div>
+                  
+                  <div className="border-t border-border pt-4 group-hover:pt-6 transition-all duration-300">
+                    <h4 className="text-sm font-semibold text-foreground mb-2">Key Qualifications:</h4>
                     
-                    <div className="mt-6 pt-4 border-t border-gold/30">
-                      <p className="text-sm font-semibold text-gold mb-3">All Qualifications & Expertise:</p>
+                    {/* Limited qualifications - visible by default */}
+                    <ul className="text-xs text-muted-foreground space-y-1 group-hover:hidden">
+                      {member.qualifications.slice(0, 3).map((qual, idx) => (
+                        <li key={idx} className="flex items-center">
+                          <div className="w-1 h-1 bg-gold rounded-full mr-2"></div>
+                          {qual}
+                        </li>
+                      ))}
+                      {member.qualifications.length > 3 && (
+                        <li className="text-gold/80 text-xs italic">+{member.qualifications.length - 3} more qualifications</li>
+                      )}
+                    </ul>
+
+                    {/* All qualifications - visible on hover */}
+                    <div className="opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-500">
                       <div className="grid grid-cols-1 gap-2">
                         {member.qualifications.map((qual, idx) => (
-                          <div key={idx} className="flex items-center text-sm bg-gold/10 text-white px-3 py-2 rounded border border-gold/20">
+                          <div key={idx} className="flex items-center text-xs bg-gold/10 text-foreground px-3 py-2 rounded border border-gold/20">
                             <div className="w-2 h-2 bg-gold rounded-full mr-3 flex-shrink-0"></div>
                             {qual}
                           </div>
@@ -127,9 +103,16 @@ const Team = () => {
                       </div>
                     </div>
                   </div>
+                  
+                  {/* Hover Indicator */}
+                  <div className="mt-4 opacity-60 group-hover:opacity-0 transition-all duration-300">
+                    <div className="bg-gold/10 text-gold text-xs px-3 py-1 rounded-full border border-gold/20">
+                      Full bio
+                    </div>
+                  </div>
                 </div>
-              </HoverCardContent>
-            </HoverCard>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
