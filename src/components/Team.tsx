@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import wisaniImage from "/lovable-uploads/1bf9f468-e2a9-49a3-a0ba-c4b45edf09ea.png";
-import mphoImage from "@/assets/dr-mpho-mokone-mathebula.jpg";
+import mphoImage from "/lovable-uploads/391c430b-9831-4dd5-a1ad-2230f287040b.png";
 import vuksoiImage from "@/assets/vukosi-nxolwani.jpg";
 
 const teamMembers = [
@@ -16,9 +17,9 @@ const teamMembers = [
     name: "Dr Mpho Mokone-Mathebula",
     role: "Research Consultant",
     image: mphoImage,
-    description: "Dr. Mpho holds a PhD in Psychology from University of the Witwatersrand where she serves as a Lecturer.",
-    extendedBio: "Dr. Mpho holds a PhD in Psychology from University of the Witwatersrand where she serves as a Lecturer. She leads our legal research and information systems with a focus on social justice and legal innovation. Her academic background provides valuable insights into human behavior and decision-making processes that enhance our legal strategies and client interactions.",
-    qualifications: ["PhD in Psychology (Wits)", "University Lecturer", "Legal Research Specialist", "Social Justice Advocate"]
+    description: "Dr. Mpho holds a PhD in Psychology from the University of the Witwatersrand, where she currently serves as a Lecturer with a focus on social justice research.",
+    extendedBio: "Dr. Mpho Mokone-Mathebula holds a PhD in Psychology from the University of the Witwatersrand, where she currently serves as a Lecturer in the Department of Psychology. Her research is driven by a deep commitment to social justice, with a particular focus on women's emancipation, naked body protests, decoloniality, child protection, education, and the broader upliftment of society. These themes reflect her passion for addressing pressing social issues and contributing to meaningful change through academic inquiry.\n\nShe has written extensively on these topics and contributes regularly on TV and radio, on issues dealing with the intersectionality of race, gender, law, and economics.\n\nAt CW Mathebula and Associates Inc., Mpho is tasked with legal research and developing the latest legal library and information systems that we always tap on to when diagnosing legal problems and finding a suitable remedy. As a person with a deep love for people, empathetic and kind, Mpho will always make you feel valued as a client and that your legal situation matters.",
+    qualifications: ["PhD in Psychology (Wits)", "University Lecturer", "Social Justice Researcher", "Legal Research Specialist", "TV & Radio Contributor"]
   },
   {
     name: "Vukosi Nxolwani",
@@ -46,82 +47,89 @@ const Team = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-            <Card key={index} className="group relative overflow-hidden hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 cursor-pointer">
-              <CardContent className="p-6 relative">
-                {/* Default Content */}
-                <div className="text-center transition-opacity duration-300 group-hover:opacity-0">
-                  <div className="relative mb-6">
+            <HoverCard key={index} openDelay={300} closeDelay={100}>
+              <HoverCardTrigger asChild>
+                <Card className="group relative overflow-hidden hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <div className="relative mb-6">
+                        <img 
+                          src={member.image} 
+                          alt={member.name}
+                          className="w-32 h-32 rounded-full mx-auto object-cover shadow-gold"
+                        />
+                        <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                      </div>
+                      <h3 className="text-xl font-bold text-gold mb-2">{member.name}</h3>
+                      <p className="text-foreground font-semibold mb-4">{member.role}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">{member.description}</p>
+                      
+                      <div className="border-t border-border pt-4">
+                        <h4 className="text-sm font-semibold text-foreground mb-2">Key Qualifications:</h4>
+                        <ul className="text-xs text-muted-foreground space-y-1">
+                          {member.qualifications.slice(0, 3).map((qual, idx) => (
+                            <li key={idx} className="flex items-center">
+                              <div className="w-1 h-1 bg-gold rounded-full mr-2"></div>
+                              {qual}
+                            </li>
+                          ))}
+                          {member.qualifications.length > 3 && (
+                            <li className="text-gold/80 text-xs italic">+{member.qualifications.length - 3} more qualifications</li>
+                          )}
+                        </ul>
+                      </div>
+                      
+                      {/* Hover Indicator */}
+                      <div className="mt-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="bg-gold/10 text-gold text-xs px-3 py-1 rounded-full border border-gold/20">
+                          Hover for full biography
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </HoverCardTrigger>
+              
+              <HoverCardContent 
+                className="w-96 max-w-[90vw] max-h-[80vh] overflow-y-auto bg-gradient-to-br from-navy/95 to-navy/85 backdrop-blur-lg border-gold/20 text-white p-6"
+                side="top"
+                align="center"
+              >
+                <div className="text-center">
+                  <div className="relative mb-4">
                     <img 
                       src={member.image} 
                       alt={member.name}
-                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-gold"
+                      className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-gold"
                     />
-                    <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                   </div>
-                  <h3 className="text-xl font-bold text-gold mb-2">{member.name}</h3>
-                  <p className="text-foreground font-semibold mb-4">{member.role}</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{member.description}</p>
+                  <h3 className="text-xl font-bold text-gold mb-1">{member.name}</h3>
+                  <p className="text-gold/80 font-medium mb-6">{member.role}</p>
                   
-                  <div className="border-t border-border pt-4">
-                    <h4 className="text-sm font-semibold text-foreground mb-2">Key Qualifications:</h4>
-                    <ul className="text-xs text-muted-foreground space-y-1">
-                      {member.qualifications.map((qual, idx) => (
-                        <li key={idx} className="flex items-center">
-                          <div className="w-1 h-1 bg-gold rounded-full mr-2"></div>
-                          {qual}
-                        </li>
+                  <div className="text-left space-y-4">
+                    <div className="text-sm leading-relaxed space-y-3">
+                      {member.extendedBio.split('\n\n').map((paragraph, idx) => (
+                        <p key={idx} className="text-white/90">
+                          {paragraph}
+                        </p>
                       ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Hover Indicator */}
-                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-gold text-navy text-xs px-2 py-1 rounded-full">
-                      Hover for more
-                    </div>
-                  </div>
-                </div>
-
-                {/* Hover Overlay Content */}
-                <div className="absolute inset-0 p-6 bg-gradient-to-br from-navy/95 to-navy/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                  <div className="text-center text-white h-full flex flex-col justify-start overflow-y-auto">
-                    <div className="relative mb-4">
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-gold"
-                      />
-                    </div>
-                    <h3 className="text-lg font-bold text-gold mb-1">{member.name}</h3>
-                    <p className="text-gold/80 font-medium text-sm mb-4">{member.role}</p>
-                    
-                    <div className="flex-1 overflow-y-auto">
-                      <div className="text-xs leading-relaxed space-y-2">
-                        {member.extendedBio.split('\n\n').map((paragraph, idx) => (
-                          <p key={idx} className="text-white/90">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
                     </div>
                     
-                    <div className="mt-4 pt-3 border-t border-gold/30">
-                      <p className="text-xs font-semibold text-gold mb-2">Qualifications:</p>
-                      <div className="flex flex-wrap gap-1 justify-center">
-                        {member.qualifications.slice(0, 3).map((qual, idx) => (
-                          <span key={idx} className="text-xs bg-gold/20 text-gold px-2 py-1 rounded">
+                    <div className="mt-6 pt-4 border-t border-gold/30">
+                      <p className="text-sm font-semibold text-gold mb-3">All Qualifications & Expertise:</p>
+                      <div className="grid grid-cols-1 gap-2">
+                        {member.qualifications.map((qual, idx) => (
+                          <div key={idx} className="flex items-center text-sm bg-gold/10 text-white px-3 py-2 rounded border border-gold/20">
+                            <div className="w-2 h-2 bg-gold rounded-full mr-3 flex-shrink-0"></div>
                             {qual}
-                          </span>
+                          </div>
                         ))}
-                        {member.qualifications.length > 3 && (
-                          <span className="text-xs text-gold/60">+{member.qualifications.length - 3} more</span>
-                        )}
                       </div>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </HoverCardContent>
+            </HoverCard>
           ))}
         </div>
 
