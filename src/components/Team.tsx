@@ -119,11 +119,7 @@ const Team = () => {
         {/* Additional Team Members */}
         <div className="mt-12 text-center">
           <h3 className="text-2xl font-bold text-foreground mb-6">Our Support Team</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            <Card className="p-6">
-              <h4 className="text-lg font-semibold text-gold mb-2">Trivin Mkhombo</h4>
-              <p className="text-foreground font-medium">Legal Assistant</p>
-            </Card>
+          <div className="flex justify-center">
             <Card className="group relative overflow-hidden hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 cursor-pointer hover:scale-105">
               <CardContent className="p-6 transition-all duration-500 group-hover:p-8">
                 <div className="text-center">
@@ -135,7 +131,7 @@ const Team = () => {
                     />
                     <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   </div>
-                  <h4 className="text-xl font-bold text-gold mb-2 group-hover:text-2xl transition-all duration-300">Mandy Mkhombo</h4>
+                  <h4 className="text-xl font-bold text-gold mb-2 group-hover:text-2xl transition-all duration-300">Trivin Mandy Mkhombo</h4>
                   <p className="text-foreground font-semibold mb-4 group-hover:mb-6 transition-all duration-300">Legal Assistant</p>
                   
                   {/* Short description - always visible */}
