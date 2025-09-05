@@ -91,12 +91,14 @@ const Contact = () => {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Contact us today to schedule your consultation and discover how we can help solve your legal challenges.
           </p>
-          <Button 
-            size="lg"
-            className="bg-gold text-navy hover:bg-gold-light shadow-gold text-lg px-8 py-4"
-          >
-            Book an Appointment
-          </Button>
+          <a href="mailto:wisani@mathebula.co.za">
+            <Button 
+              size="lg"
+              className="bg-gold text-navy hover:bg-gold-light shadow-gold text-lg px-8 py-4"
+            >
+              Book an Appointment
+            </Button>
+          </a>
         </div>
       </div>
     </section>

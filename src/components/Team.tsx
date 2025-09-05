@@ -54,7 +54,7 @@ const Team = () => {
                     <img 
                       src={member.image} 
                       alt={member.name}
-                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-gold transition-transform duration-500 group-hover:scale-110"
+                      className="w-32 h-32 rounded-full mx-auto object-cover object-top shadow-gold transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   </div>
@@ -131,7 +131,7 @@ const Team = () => {
                     <img 
                       src="/lovable-uploads/b66145f2-3dff-46fc-bcbc-2f61f84acabb.png" 
                       alt="Mandy Mkhombo"
-                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-gold transition-transform duration-500 group-hover:scale-110"
+                      className="w-32 h-32 rounded-full mx-auto object-cover object-top shadow-gold transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   </div>
