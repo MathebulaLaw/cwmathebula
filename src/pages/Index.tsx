@@ -5,6 +5,7 @@ import PracticeAreas from "@/components/PracticeAreas";
 import Team from "@/components/Team";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import FloatingScrollButton from "@/components/FloatingScrollButton";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      <FloatingScrollButton />
     </div>
   );
 };
