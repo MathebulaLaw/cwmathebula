@@ -1,0 +1,114 @@
+import { Button } from "@/components/ui/button";
+import { Link, useNavigate } from "react-router-dom";
+import { isAuthenticated, logout } from "@/lib/auth";
+import { LogOut, LayoutDashboard } from "lucide-react";
+
+const Header = () => {
+  const navigate = useNavigate();
+  const isAuth = isAuthenticated();
+
+  const scrollToSection = (sectionId: string) => {
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-elegant">
+      <div className="container mx-auto px-6 py-[2px]">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <Link to="/">
+              <img 
+                src="/logo.png" 
+                alt="CW Mathebula & Associates" 
+                className="h-40 w-auto filter drop-shadow-sm" 
+              />
+            </Link>
+          </div>
+          
+          <nav className="hidden md:flex items-center space-x-8">
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="text-navy hover:text-gold transition-smooth font-medium"
+            >
+              About Us
+            </button>
+            <button 
+              onClick={() => scrollToSection('practice-areas')}
+              className="text-navy hover:text-gold transition-smooth font-medium"
+            >
+              Practice Areas
+            </button>
+            <Link 
+              to="/blog"
+              className="text-navy hover:text-gold transition-smooth font-medium"
+            >
+              Blog
+            </Link>
+            <button 
+              onClick={() => scrollToSection('team')}
+              className="text-navy hover:text-gold transition-smooth font-medium"
+            >
+              Our People
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="text-navy hover:text-gold transition-smooth font-medium"
+            >
+              Contact
+            </button>
+            
+            {isAuth ? (
+              <div className="flex items-center space-x-4">
+                <Link to="/blog/admin">
+                  <Button 
+                    variant="outline"
+                    className="border-gold text-navy hover:bg-gold-light flex items-center gap-2"
+                  >
+                    <LayoutDashboard className="w-4 h-4" />
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button 
+                  variant="ghost"
+                  onClick={handleLogout}
+                  className="text-navy hover:text-red-600 flex items-center gap-2"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                variant="secondary"
+                onClick={() => scrollToSection('contact')}
+                className="bg-gold text-navy hover:bg-gold-light"
+              >
+                Schedule Consultation
+              </Button>
+            )}
+          </nav>
+
+          <button className="md:hidden text-navy" aria-label="Open mobile menu">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

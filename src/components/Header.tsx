@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const scrollToSection = (sectionId: string) => {
@@ -12,7 +13,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/528eb7af-5635-410a-9317-9baee77f251a.png" 
+              src="/logo.png" 
               alt="CW Mathebula & Associates" 
               className="h-40 w-auto filter drop-shadow-sm" 
             />
@@ -32,6 +33,12 @@ const Header = () => {
             >
               Practice Areas
             </button>
+            <Link 
+              to="/blog"
+              className="text-navy hover:text-gold transition-smooth font-medium"
+            >
+              Blog
+            </Link>
             <button 
               onClick={() => scrollToSection('team')}
               className="text-navy hover:text-gold transition-smooth font-medium"
@@ -54,7 +61,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-navy">
+          <button className="md:hidden text-navy" aria-label="Open mobile menu">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>

@@ -1,8 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import wisaniImage from "/lovable-uploads/1bf9f468-e2a9-49a3-a0ba-c4b45edf09ea.png";
-import mphoImage from "/lovable-uploads/391c430b-9831-4dd5-a1ad-2230f287040b.png";
-import vuksoiImage from "/lovable-uploads/3c1ddfd3-14a6-4b8f-b88f-5d5f789fc36e.png";
+import wisaniImage from "@/assets/wisani-mathebula.jpg";
+import mphoImage from "@/assets/dr-mpho-mokone-mathebula.jpg";
+import vuksoiImage from "@/assets/vukosi-nxolwani.jpg";
 
 const teamMembers = [
   {
@@ -46,14 +45,15 @@ const Team = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <Card key={index} className="group relative overflow-hidden hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 cursor-pointer hover:scale-105">
+          {teamMembers.map((member) => (
+            <Card key={member.name} className="group relative overflow-hidden hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 cursor-pointer hover:scale-105">
               <CardContent className="p-6 transition-all duration-500 group-hover:p-8">
                 <div className="text-center">
                   <div className="relative mb-6">
                     <img 
                       src={member.image} 
                       alt={member.name}
+                      loading="lazy"
                       className="w-32 h-32 rounded-full mx-auto object-cover object-top shadow-gold transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
@@ -67,8 +67,8 @@ const Team = () => {
                   {/* Extended bio - visible on hover */}
                   <div className="opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-500 group-hover:mb-6">
                     <div className="text-sm leading-relaxed space-y-3 text-left">
-                      {member.extendedBio.split('\n\n').map((paragraph, idx) => (
-                        <p key={idx} className="text-muted-foreground">
+                      {member.extendedBio.split('\n\n').map((paragraph) => (
+                        <p key={paragraph.substring(0, 50)} className="text-muted-foreground">
                           {paragraph}
                         </p>
                       ))}
@@ -80,8 +80,8 @@ const Team = () => {
                     
                     {/* Limited qualifications - visible by default */}
                     <ul className="text-xs text-muted-foreground space-y-1 group-hover:hidden">
-                      {member.qualifications.slice(0, 3).map((qual, idx) => (
-                        <li key={idx} className="flex items-center">
+                      {member.qualifications.slice(0, 3).map((qual) => (
+                        <li key={qual} className="flex items-center">
                           <div className="w-1 h-1 bg-gold rounded-full mr-2"></div>
                           {qual}
                         </li>
@@ -94,8 +94,8 @@ const Team = () => {
                     {/* All qualifications - visible on hover */}
                     <div className="opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-500">
                       <div className="grid grid-cols-1 gap-2">
-                        {member.qualifications.map((qual, idx) => (
-                          <div key={idx} className="flex items-center text-xs bg-gold/10 text-foreground px-3 py-2 rounded border border-gold/20">
+                        {member.qualifications.map((qual) => (
+                          <div key={qual} className="flex items-center text-xs bg-gold/10 text-foreground px-3 py-2 rounded border border-gold/20">
                             <div className="w-2 h-2 bg-gold rounded-full mr-3 flex-shrink-0"></div>
                             {qual}
                           </div>
@@ -125,8 +125,9 @@ const Team = () => {
                 <div className="text-center">
                   <div className="relative mb-6">
                     <img 
-                      src="/lovable-uploads/b66145f2-3dff-46fc-bcbc-2f61f84acabb.png" 
+                      src="/placeholder.svg" 
                       alt="Mandy Mkhombo"
+                      loading="lazy"
                       className="w-32 h-32 rounded-full mx-auto object-cover object-top shadow-gold transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 w-32 h-32 rounded-full mx-auto bg-gradient-gold opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>

@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/law-office-hero.jpg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -10,8 +9,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-start pt-24 bg-gradient-hero">
       {/* Background Image Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="absolute inset-0 bg-cover bg-center opacity-20 bg-[url('/src/assets/law-office-hero.jpg')]"
       />
       <div className="absolute inset-0 bg-navy opacity-80" />
       
@@ -51,7 +49,7 @@ const Hero = () => {
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
               <img 
-                src="/lovable-uploads/03b84783-4f70-4454-8a4d-dee7408362f3.png" 
+                src="/scales-icon.png" 
                 alt="Scales of Justice - Areas of Expertise"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
@@ -69,7 +67,7 @@ const Hero = () => {
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
               <img 
-                src="/lovable-uploads/9507f24f-13ab-49fb-9bd9-9966fc60dc85.png" 
+                src="/team-icon.png" 
                 alt="Team Icon - Experienced Team"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
@@ -87,7 +85,7 @@ const Hero = () => {
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
               <img 
-                src="/lovable-uploads/8648243a-89c7-402c-9312-bf68b0815aab.png" 
+                src="/shield-icon.png" 
                 alt="Shield with Checkmark - Client Focused"
                 className="w-full h-full object-contain drop-shadow-lg"
               />
@@ -105,7 +103,7 @@ const Hero = () => {
           >
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
               <img 
-                src="/lovable-uploads/ac678ef5-9097-4b4d-a1ba-89a03204f705.png" 
+                src="/handshake-icon.png" 
                 alt="Handshake - Results Driven"
                 className="w-full h-full object-contain drop-shadow-lg"
               />

@@ -1,7 +1,4 @@
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { db, Post, updateTagCounts } from './lib/db';
+import { db, Post, updateTagCounts } from '@/lib/db';
 import { v4 as uuidv4 } from 'uuid';
 
 function generateSlug(title: string): string {
@@ -187,43 +184,33 @@ const practiceAreaPosts = [
 ];
 
 async function seedPosts() {
-  try {
-    const existingPosts = await db.posts.count();
-    console.log('Existing posts:', existingPosts);
-    if (existingPosts > 0) {
-      console.log('Database already has posts, skipping seed');
-      return;
-    }
-
-    const now = new Date();
-    
-    for (let i = 0; i < practiceAreaPosts.length; i++) {
-      const postData = practiceAreaPosts[i];
-      const post: Post = {
-        id: uuidv4(),
-        title: postData.title,
-        content: postData.content,
-        excerpt: extractExcerpt(postData.content),
-        slug: generateSlug(postData.title),
-        tags: postData.tags,
-        published: true,
-        createdAt: new Date(now.getTime() - (i * 86400000)),
-        updatedAt: new Date(now.getTime() - (i * 86400000))
-      };
-      
-      await db.posts.add(post);
-    }
-
-    await updateTagCounts();
-    console.log('Seeded 8 practice area blog posts');
-    
-    const afterCount = await db.posts.count();
-    console.log('Posts after seed:', afterCount);
-  } catch (error) {
-    console.error('Seed error:', error);
+  const existingPosts = await db.posts.count();
+  if (existingPosts > 0) {
+    console.log('Database already has posts, skipping seed');
+    return;
   }
+
+  const now = new Date();
+  
+  for (let i = 0; i < practiceAreaPosts.length; i++) {
+    const postData = practiceAreaPosts[i];
+    const post: Post = {
+      id: uuidv4(),
+      title: postData.title,
+      content: postData.content,
+      excerpt: extractExcerpt(postData.content),
+      slug: generateSlug(postData.title),
+      tags: postData.tags,
+      published: true,
+      createdAt: new Date(now.getTime() - (i * 86400000)),
+      updatedAt: new Date(now.getTime() - (i * 86400000))
+    };
+    
+    await db.posts.add(post);
+  }
+
+  await updateTagCounts();
+  console.log('Seeded 8 practice area blog posts');
 }
 
-seedPosts();
-
-createRoot(document.getElementById("root")!).render(<App />);
+seedPosts().catch(console.error);
