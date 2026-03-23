@@ -1,8 +1,35 @@
+import { useQuery } from "@tanstack/react-query";
+import { fetchSiteContent } from "@/lib/cms-api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
+  const { data: contactContent, isLoading } = useQuery({
+    queryKey: ['site_content', 'contact'],
+    queryFn: () => fetchSiteContent('contact')
+  });
+
+  if (isLoading || !contactContent) {
+    return (
+      <section id="contact" className="py-20 bg-navy">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <Skeleton className="h-12 w-64 mx-auto mb-6 bg-navy-light/50" />
+            <Skeleton className="h-1 w-24 mx-auto mb-8 bg-gold/50" />
+            <Skeleton className="h-6 w-3/4 max-w-lg mx-auto bg-navy-light/50" />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            {[1, 2, 3].map((i) => (
+              <Skeleton key={i} className="h-48 w-full bg-navy-light/50 rounded-xl" />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="contact" className="py-20 bg-navy">
       <div className="container mx-auto px-6">
@@ -25,18 +52,15 @@ const Contact = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                <a 
-                  href="mailto:wisani@mathebulalaw.co.za"
-                  className="block text-foreground hover:text-gold transition-colors"
-                >
-                  wisani@mathebulalaw.co.za
-                </a>
-                <a 
-                  href="mailto:mpho@mathebulalaw.co.za"
-                  className="block text-foreground hover:text-gold transition-colors"
-                >
-                  mpho@mathebulalaw.co.za
-                </a>
+                {contactContent.emails?.map((email: string, idx: number) => (
+                  <a 
+                    key={idx}
+                    href={`mailto:${email}`}
+                    className="block text-foreground hover:text-gold transition-colors"
+                  >
+                    {email}
+                  </a>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -49,18 +73,15 @@ const Contact = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                <a 
-                  href="tel:+27769981049"
-                  className="block text-foreground hover:text-gold transition-colors text-lg"
-                >
-                  +27 76 998 1049
-                </a>
-                <a 
-                  href="tel:+27722756235"
-                  className="block text-foreground hover:text-gold transition-colors text-lg"
-                >
-                  +27 72 275 6235
-                </a>
+                {contactContent.phones?.map((phone: string, idx: number) => (
+                  <a 
+                    key={idx}
+                    href={`tel:${phone.replace(/\s+/g, '')}`}
+                    className="block text-foreground hover:text-gold transition-colors text-lg"
+                  >
+                    {phone}
+                  </a>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -73,11 +94,9 @@ const Contact = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-1 text-foreground">
-                <div>Johannesburg</div>
-                <div>Pretoria</div>
-                <div>Polokwane</div>
-                <div>Tzaneen</div>
-                <div>Phalaborwa</div>
+                {contactContent.locations?.map((location: string, idx: number) => (
+                  <div key={idx}>{location}</div>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -91,7 +110,7 @@ const Contact = () => {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Contact us today to schedule your consultation and discover how we can help solve your legal challenges.
           </p>
-          <a href="mailto:wisani@mathebula.co.za">
+          <a href={`mailto:${contactContent.emails?.[0] || 'wisani@mathebulalaw.co.za'}`}>
             <Button 
               size="lg"
               className="bg-gold text-navy hover:bg-gold-light shadow-gold text-lg px-8 py-4"

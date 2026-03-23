@@ -1,35 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
+import { fetchPracticeAreas, PracticeArea } from "@/lib/cms-api";
+import { iconMap } from "@/lib/icons";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Gavel, 
-  Home, 
-  Building2, 
-  Shield, 
-  FileText, 
-  Heart, 
-  Users, 
-  Calculator, 
-  AlertTriangle, 
-  HandHeart,
-  MapPin,
-  Mountain
-} from "lucide-react";
-
-const practiceAreas = [
-  { icon: Gavel, title: "Litigation", description: "Court representation and dispute resolution" },
-  { icon: Home, title: "Property Law", description: "Real estate transactions and property rights" },
-  { icon: Building2, title: "Commercial & Corporate Law", description: "Business formation and corporate governance" },
-  { icon: Shield, title: "Insurance Law", description: "Insurance claims and coverage disputes" },
-  { icon: FileText, title: "Trusts, Wills & Estates", description: "Estate planning and administration" },
-  { icon: Heart, title: "Divorce & Family Law", description: "Family matters and relationship disputes" },
-  { icon: Users, title: "Employment & Labour Law", description: "Workplace rights and employment disputes" },
-  { icon: Calculator, title: "Tax Law", description: "Tax compliance and dispute resolution" },
-  { icon: AlertTriangle, title: "Insolvency & Business Rescue", description: "Financial distress and business recovery" },
-  { icon: HandHeart, title: "Contract Drafting & Disputes", description: "Agreement preparation and enforcement" },
-  { icon: MapPin, title: "Municipal Law", description: "Local government and municipal matters" },
-  { icon: Mountain, title: "Mining Rights Law", description: "Mining licenses and mineral rights" }
-];
+import { Skeleton } from "@/components/ui/skeleton";
 
 const PracticeAreas = () => {
+  const { data: practiceAreas, isLoading } = useQuery({
+    queryKey: ['practice_areas'],
+    queryFn: fetchPracticeAreas
+  });
+
   return (
     <section id="practice-areas" className="py-20 bg-navy">
       <div className="container mx-auto px-6">
@@ -44,20 +24,29 @@ const PracticeAreas = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {practiceAreas.map((area, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-gold transition-all duration-300 hover:-translate-y-2 bg-card border-navy-light hover:border-gold"
-            >
-              <CardHeader className="text-center pb-4">
-                <area.icon className="w-12 h-12 text-gold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
-                <CardTitle className="text-lg text-foreground">{area.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-center">{area.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+          {isLoading ? (
+            Array(12).fill(0).map((_, i) => (
+              <Skeleton key={i} className="h-48 w-full bg-navy-light/50 rounded-xl" />
+            ))
+          ) : (
+            practiceAreas?.map((area: PracticeArea) => {
+              const Icon = iconMap[area.icon_name] || iconMap['Scale'];
+              return (
+                <Card 
+                  key={area.id} 
+                  className="group hover:shadow-gold transition-all duration-300 hover:-translate-y-2 bg-card border-navy-light hover:border-gold"
+                >
+                  <CardHeader className="text-center pb-4">
+                    <Icon className="w-12 h-12 text-gold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <CardTitle className="text-lg text-foreground">{area.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground text-center">{area.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })
+          )}
         </div>
       </div>
     </section>
