@@ -5,6 +5,25 @@ export async function isAdminSetup(): Promise<boolean> {
   return true;
 }
 
+export async function signInWithPassword(email: string, password: string): Promise<{ success: boolean; error: string | null }> {
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      console.error('Auth error:', error.message);
+      return { success: false, error: error.message };
+    }
+
+    return { success: true, error: null };
+  } catch (err) {
+    console.error('Auth exception:', err);
+    return { success: false, error: 'An unexpected error occurred' };
+  }
+}
+
 export async function sendMagicLink(email: string): Promise<{ success: boolean; error: string | null }> {
   try {
     const isLocal = window.location.hostname === 'localhost';
