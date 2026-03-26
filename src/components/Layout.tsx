@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import FloatingScrollButton from '@/components/FloatingScrollButton';
@@ -11,13 +12,62 @@ export default function Layout({ children, showBlogActive = false }: LayoutProps
   const location = useLocation();
   const isBlogPage = location.pathname.startsWith('/blog');
   const isHomePage = location.pathname === '/';
+  
+  const [activeSection, setActiveSection] = useState<string>('home');
+
+  useEffect(() => {
+    if (!isHomePage) return;
+
+    const sections = ['home', 'about', 'practice-areas', 'team', 'contact'];
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Adjust to trigger when section is nicely in view
+      threshold: 0
+    };
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [isHomePage]);
 
   const scrollToSection = (sectionId: string) => {
-    if (isBlogPage) {
+    if (!isHomePage) {
       window.location.href = `/#${sectionId}`;
       return;
     }
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(sectionId);
+    if (element) {
+      // Offset for sticky header
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const getNavLinkClass = (sectionId: string) => {
+    if (isHomePage) {
+      return `transition-smooth ${activeSection === sectionId ? 'text-gold font-bold' : 'text-navy font-normal hover:text-gold'}`;
+    }
+    return 'transition-smooth text-navy font-normal hover:text-gold';
   };
 
   return (
@@ -36,46 +86,46 @@ export default function Layout({ children, showBlogActive = false }: LayoutProps
             </div>
             
             <nav className="hidden md:flex items-center space-x-8">
-              <Link 
-                to="/"
-                className={`transition-smooth font-medium ${isHomePage ? 'text-gold' : 'text-navy hover:text-gold'}`}
+              <button 
+                onClick={() => scrollToSection('home')}
+                className={getNavLinkClass('home')}
               >
                 Home
-              </Link>
+              </button>
               <button 
                 onClick={() => scrollToSection('about')}
-                className="text-navy hover:text-gold transition-smooth font-medium"
+                className={getNavLinkClass('about')}
               >
                 About Us
               </button>
               <button 
                 onClick={() => scrollToSection('practice-areas')}
-                className="text-navy hover:text-gold transition-smooth font-medium"
+                className={getNavLinkClass('practice-areas')}
               >
-                Practice Areas
+                Our Services
               </button>
               <Link 
                 to="/blog"
-                className={`transition-smooth font-medium ${showBlogActive || location.pathname.startsWith('/blog') ? 'text-gold' : 'text-navy hover:text-gold'}`}
+                className={`transition-smooth ${showBlogActive || location.pathname.startsWith('/blog') ? 'text-gold font-bold' : 'text-navy font-normal hover:text-gold'}`}
               >
                 Blog
               </Link>
               <button 
                 onClick={() => scrollToSection('team')}
-                className="text-navy hover:text-gold transition-smooth font-medium"
+                className={getNavLinkClass('team')}
               >
                 Our People
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
-                className="text-navy hover:text-gold transition-smooth font-medium"
+                className={getNavLinkClass('contact')}
               >
                 Contact
               </button>
               <Button 
                 variant="secondary"
                 onClick={() => scrollToSection('contact')}
-                className="bg-gold text-navy hover:bg-gold-light"
+                className="bg-gold text-navy font-semibold hover:bg-gold-light"
               >
                 Schedule Consultation
               </Button>
@@ -106,13 +156,13 @@ export default function Layout({ children, showBlogActive = false }: LayoutProps
             <div>
               <h3 className="text-lg font-semibold text-gold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/" className="hover:text-gold transition-colors">Home</Link></li>
-                <li><button onClick={() => scrollToSection('about')} className="hover:text-gold transition-colors">About Us</button></li>
-                <li><button onClick={() => scrollToSection('practice-areas')} className="hover:text-gold transition-colors">Practice Areas</button></li>
-                <li><Link to="/blog" className="hover:text-gold transition-colors">Blog</Link></li>
-                <li><button onClick={() => scrollToSection('team')} className="hover:text-gold transition-colors">Our People</button></li>
-                <li><button onClick={() => scrollToSection('contact')} className="hover:text-gold transition-colors">Contact</button></li>
-                <li><Link to="/blog/admin" className="hover:text-gold transition-colors">Login</Link></li>
+                <li><button onClick={() => scrollToSection('home')} className="hover:text-gold transition-colors font-normal">Home</button></li>
+                <li><button onClick={() => scrollToSection('about')} className="hover:text-gold transition-colors font-normal">About Us</button></li>
+                <li><button onClick={() => scrollToSection('practice-areas')} className="hover:text-gold transition-colors font-normal">Our Services</button></li>
+                <li><Link to="/blog" className="hover:text-gold transition-colors font-normal">Blog</Link></li>
+                <li><button onClick={() => scrollToSection('team')} className="hover:text-gold transition-colors font-normal">Our People</button></li>
+                <li><button onClick={() => scrollToSection('contact')} className="hover:text-gold transition-colors font-normal">Contact</button></li>
+                <li><Link to="/blog/admin" className="hover:text-gold transition-colors font-normal">Login</Link></li>
               </ul>
             </div>
             <div>
@@ -133,3 +183,4 @@ export default function Layout({ children, showBlogActive = false }: LayoutProps
     </div>
   );
 }
+
